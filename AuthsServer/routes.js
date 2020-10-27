@@ -102,7 +102,7 @@ authRouter.post('/forgot', async (req, res, next) => {
     }
   }
 );
-authRouter.get('/reset/:token', async (req, res, next) => {
+authRouter.get('/reset/:token', async (req, res) => {
     try {
       await connecMongooseService.connectionDB();
       let user = await userService.findOneByParams({ resetPasswordToken: req.params.token });
@@ -115,7 +115,7 @@ authRouter.get('/reset/:token', async (req, res, next) => {
     }
   }
 );
-authRouter.post('/reset/:token', async (req, res, next) => {
+authRouter.post('/reset/:token', async (req, res) => {
   let { token } = req.params;
     try {
       let { password } = req.body;
